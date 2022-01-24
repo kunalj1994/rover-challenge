@@ -5,7 +5,7 @@ import Routes from './components/routes/Routes'
 function App() {
     return (
       <Router>
-        <div>
+        <div className="App">
           <Switch>
             <Route component={Routes} />
           </Switch>
