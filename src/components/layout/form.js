@@ -65,28 +65,30 @@ const Form = ({ setOutput }) => {
 
     return (
         <form onSubmit={submitForm}>
-            <div>
-                <label> Plateau Size: </label>
-                <input type="tel" value={plateau.x} pattern="[0-9]*" maxLength={1} id="plateau.x" onChange={ e => onChange(e.target) } /> &nbsp;
-                <input type="tel" value={plateau.y} pattern="[0-9]*" maxLength={1} id="plateau.y" onChange={ e => onChange(e.target) } />
+            <div className="plateau">
+                <label> Plateau Size: (X, Y) </label>
+                <input type="tel" className="input" value={plateau.x} pattern="[0-9]*" maxLength={1} id="plateau.x" onChange={ e => onChange(e.target) } /> 
+                <input type="tel" className="input" value={plateau.y} pattern="[0-9]*" maxLength={1} id="plateau.y" onChange={ e => onChange(e.target) } />
             </div>
             <div>
                 <label> Number of Rovers: </label>
-                <input type="tel" pattern="[0-9]*" maxLength={1} onChange={ e => createRovers(e.target) } /> &nbsp;
+                <input type="tel" className="input" pattern="[0-9]*" maxLength={1} onChange={ e => createRovers(e.target) } /> 
 
                 {
                     rovers.map((rover, i) => (
-                        <div key={i}>
-                            <label> Position of Rovers: </label>
-                            <input type="tel" value={rover.x} pattern="[0-9]*" id="rover.x" maxLength={1} onChange={ e=> onChange(e.target, i) } /> &nbsp;
-                            <input type="tel" value={rover.y} pattern="[0-9]*" id="rover.y" maxLength={1} onChange={ e=> onChange(e.target, i) } /> &nbsp;
-                            <input type="text" value={rover.dir} pattern="[N|W|S|E]*" id="rover.dir" onChange={ e=> onChange(e.target, i) } maxLength={1} /> &nbsp;
-                            <input type="text" value={rover.command} pattern="[M|R|L]*" id="rover.command" onChange={ e=> onChange(e.target, i) } /> 
+                        <div className="rovers" key={i}>
+                            <label> Position of Rovers: (X, Y, Direction) </label>
+                            <input type="tel" className="input" value={rover.x} pattern="[0-9]*" id="rover.x" maxLength={1} onChange={ e=> onChange(e.target, i) } /> 
+                            <input type="tel" className="input" value={rover.y} pattern="[0-9]*" id="rover.y" maxLength={1} onChange={ e=> onChange(e.target, i) } /> 
+                            <input type="text" className="input" value={rover.dir} pattern="[N|W|S|E]*" id="rover.dir" onChange={ e=> onChange(e.target, i) } maxLength={1} /> 
+                            <br />
+                            <label> Command for Rover {i + 1}: </label>
+                            <input type="text" className="command" value={rover.command} pattern="[M|R|L]*" id="rover.command" onChange={ e=> onChange(e.target, i) } /> 
                         </div>
                     ))
                 }
             </div>
-            <button onSubmit={ e => submitForm(e) }> Move Rover </button>
+            <button className="submit" onSubmit={ e => submitForm(e) }> Move Rover </button>
         </form>
     )
 }
