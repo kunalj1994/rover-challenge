@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Form from '../layout/form'
+import Home from '../layout/home'
 
 const Routes = props => {
 	return (
 		<Fragment>
 			<Switch>
-				<Route exact path="/" component={Form} />
+				<Route exact path="/" component={Home} />
 			</Switch>
 		</Fragment>
 	)
